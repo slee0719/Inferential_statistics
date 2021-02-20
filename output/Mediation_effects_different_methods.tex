@@ -1,0 +1,613 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Mediation Effects: Comparing different methods},
+  pdfauthor={Seunghun Lee},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+
+\title{Mediation Effects: Comparing different methods}
+\author{Seunghun Lee}
+\date{r sys.Date()}
+
+\begin{document}
+\maketitle
+
+Import necessary libraries
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{libraries <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"dplyr"}\NormalTok{, }\StringTok{"ggplot2"}\NormalTok{, }\StringTok{"kableExtra"}\NormalTok{, }\StringTok{"tidyverse"}\NormalTok{, }\StringTok{"lavaan"}\NormalTok{, }\StringTok{"MBESS"}\NormalTok{)}
+\KeywordTok{lapply}\NormalTok{(libraries, require, }\DataTypeTok{character.only =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: dplyr
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: ggplot2
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: kableExtra
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'kableExtra'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:dplyr':
+## 
+##     group_rows
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: tidyverse
+\end{verbatim}
+
+\begin{verbatim}
+## -- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+\end{verbatim}
+
+\begin{verbatim}
+## v tibble  3.0.4     v purrr   0.3.4
+## v tidyr   1.1.2     v stringr 1.4.0
+## v readr   1.4.0     v forcats 0.5.0
+\end{verbatim}
+
+\begin{verbatim}
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter()          masks stats::filter()
+## x kableExtra::group_rows() masks dplyr::group_rows()
+## x dplyr::lag()             masks stats::lag()
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: lavaan
+\end{verbatim}
+
+\begin{verbatim}
+## This is lavaan 0.6-7
+\end{verbatim}
+
+\begin{verbatim}
+## lavaan is BETA software! Please report any bugs.
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: MBESS
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'MBESS'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:lavaan':
+## 
+##     cor2cov
+\end{verbatim}
+
+\begin{verbatim}
+## [[1]]
+## [1] TRUE
+## 
+## [[2]]
+## [1] TRUE
+## 
+## [[3]]
+## [1] TRUE
+## 
+## [[4]]
+## [1] TRUE
+## 
+## [[5]]
+## [1] TRUE
+## 
+## [[6]]
+## [1] TRUE
+\end{verbatim}
+
+\hypertarget{import-the-data}{%
+\section{Import the data}\label{import-the-data}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dat <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"./data/student-mat.csv"}\NormalTok{, }\DataTypeTok{sep =} \StringTok{';'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{descriptive-statistics}{%
+\section{Descriptive statistics}\label{descriptive-statistics}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dat }\OperatorTok{%>%}
+\StringTok{  }\NormalTok{is.na }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{apply}\NormalTok{(}\DecValTok{2}\NormalTok{, sum) }\CommentTok{# there is no missing value}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     school        sex        age    address    famsize    Pstatus       Medu 
+##          0          0          0          0          0          0          0 
+##       Fedu       Mjob       Fjob     reason   guardian traveltime  studytime 
+##          0          0          0          0          0          0          0 
+##   failures  schoolsup     famsup       paid activities    nursery     higher 
+##          0          0          0          0          0          0          0 
+##   internet   romantic     famrel   freetime      goout       Dalc       Walc 
+##          0          0          0          0          0          0          0 
+##     health   absences         G1         G2         G3 
+##          0          0          0          0          0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test <-}\StringTok{ }\NormalTok{dat }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\KeywordTok{across}\NormalTok{(}\KeywordTok{where}\NormalTok{(is.character), as.factor))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{assumptions}{%
+\section{Assumptions}\label{assumptions}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{summary_for_all <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(data)\{}
+  \ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\KeywordTok{ncol}\NormalTok{(data))\{}
+    \ControlFlowTok{if}\NormalTok{(}\KeywordTok{class}\NormalTok{(data[[i]]) }\OperatorTok{==}\StringTok{ "integer"}\NormalTok{)\{}
+      \KeywordTok{hist}\NormalTok{(data[[i]], }\DataTypeTok{breaks =} \DecValTok{7}\NormalTok{,}
+           \DataTypeTok{main =} \KeywordTok{paste}\NormalTok{(}\StringTok{"Histogram of"}\NormalTok{, }\KeywordTok{names}\NormalTok{(test)[i]),}
+           \DataTypeTok{xlab =} \KeywordTok{names}\NormalTok{(test[i]),}
+           \DataTypeTok{ylab =} \StringTok{"Frequency"}
+\NormalTok{          )\} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (}\KeywordTok{class}\NormalTok{(data[[i]]) }\OperatorTok{==}\StringTok{ "factor"}\NormalTok{)\{}
+            \KeywordTok{kbl}\NormalTok{(}\KeywordTok{summary}\NormalTok{(data[[i]]), }\DataTypeTok{caption =} \KeywordTok{paste}\NormalTok{(}\StringTok{"Table of"}\NormalTok{, }\KeywordTok{names}\NormalTok{(data[i]))) }\OperatorTok{%>%}
+\StringTok{                }\KeywordTok{kable_classic}\NormalTok{(}\DataTypeTok{full_width =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{html_font =} \StringTok{"Cambria"}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{                }\KeywordTok{kable_styling}\NormalTok{(}\DataTypeTok{font_size =} \DecValTok{12}\NormalTok{, }\DataTypeTok{position =} \StringTok{"center"}\NormalTok{)}
+\NormalTok{          \}}
+\NormalTok{  \}}
+\NormalTok{\}}
+
+\KeywordTok{summary_for_all}\NormalTok{(test)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Mediation_effects_different_methods_files/figure-latex/unnamed-chunk-4-1.pdf}
+\includegraphics{Mediation_effects_different_methods_files/figure-latex/unnamed-chunk-4-2.pdf}
+\includegraphics{Mediation_effects_different_methods_files/figure-latex/unnamed-chunk-4-3.pdf}
+\includegraphics{Mediation_effects_different_methods_files/figure-latex/unnamed-chunk-4-4.pdf}
+\includegraphics{Mediation_effects_different_methods_files/figure-latex/unnamed-chunk-4-5.pdf}
+\includegraphics{Mediation_effects_different_methods_files/figure-latex/unnamed-chunk-4-6.pdf}
+\includegraphics{Mediation_effects_different_methods_files/figure-latex/unnamed-chunk-4-7.pdf}
+\includegraphics{Mediation_effects_different_methods_files/figure-latex/unnamed-chunk-4-8.pdf}
+\includegraphics{Mediation_effects_different_methods_files/figure-latex/unnamed-chunk-4-9.pdf}
+\includegraphics{Mediation_effects_different_methods_files/figure-latex/unnamed-chunk-4-10.pdf}
+\includegraphics{Mediation_effects_different_methods_files/figure-latex/unnamed-chunk-4-11.pdf}
+\includegraphics{Mediation_effects_different_methods_files/figure-latex/unnamed-chunk-4-12.pdf}
+\includegraphics{Mediation_effects_different_methods_files/figure-latex/unnamed-chunk-4-13.pdf}
+\includegraphics{Mediation_effects_different_methods_files/figure-latex/unnamed-chunk-4-14.pdf}
+\includegraphics{Mediation_effects_different_methods_files/figure-latex/unnamed-chunk-4-15.pdf}
+\includegraphics{Mediation_effects_different_methods_files/figure-latex/unnamed-chunk-4-16.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_test <-}\StringTok{ }\NormalTok{test }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(G1, G2, G3) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{as.data.frame}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{sem}{%
+\section{SEM}\label{sem}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{testmod <-}\StringTok{ "}
+\StringTok{# Path c' (direct effect)}
+\StringTok{G3 ~ c*G1 }
+
+\StringTok{# Path a}
+\StringTok{G2 ~ a*G1}
+
+\StringTok{# Path b}
+\StringTok{G3 ~ b*G2}
+
+\StringTok{# Indreict effect (a*b): Sobel test (Delta Method)}
+\StringTok{ab := a*b}
+\StringTok{"}
+
+\CommentTok{# Fit estimate}
+\NormalTok{fitmod <-}\StringTok{ }\KeywordTok{sem}\NormalTok{(testmod, }\DataTypeTok{data =}\NormalTok{ my_test)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(fitmod, }\DataTypeTok{fit.measures =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{rsquare =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## lavaan 0.6-7 ended normally after 18 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                          5
+##                                                       
+##   Number of observations                           395
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 0.000
+##   Degrees of freedom                                 0
+## 
+## Model Test Baseline Model:
+## 
+##   Test statistic                              1193.651
+##   Degrees of freedom                                 3
+##   P-value                                        0.000
+## 
+## User Model versus Baseline Model:
+## 
+##   Comparative Fit Index (CFI)                    1.000
+##   Tucker-Lewis Index (TLI)                       1.000
+## 
+## Loglikelihood and Information Criteria:
+## 
+##   Loglikelihood user model (H0)              -1647.634
+##   Loglikelihood unrestricted model (H1)      -1647.634
+##                                                       
+##   Akaike (AIC)                                3305.268
+##   Bayesian (BIC)                              3325.162
+##   Sample-size adjusted Bayesian (BIC)         3309.297
+## 
+## Root Mean Square Error of Approximation:
+## 
+##   RMSEA                                          0.000
+##   90 Percent confidence interval - lower         0.000
+##   90 Percent confidence interval - upper         0.000
+##   P-value RMSEA <= 0.05                             NA
+## 
+## Standardized Root Mean Square Residual:
+## 
+##   SRMR                                           0.000
+## 
+## Parameter Estimates:
+## 
+##   Standard errors                             Standard
+##   Information                                 Expected
+##   Information saturated (h1) model          Structured
+## 
+## Regressions:
+##                    Estimate  Std.Err  z-value  P(>|z|)
+##   G3 ~                                                
+##     G1         (c)    0.153    0.056    2.739    0.006
+##   G2 ~                                                
+##     G1         (a)    0.966    0.030   32.360    0.000
+##   G3 ~                                                
+##     G2         (b)    0.987    0.049   19.985    0.000
+## 
+## Variances:
+##                    Estimate  Std.Err  z-value  P(>|z|)
+##    .G3                3.723    0.265   14.053    0.000
+##    .G2                3.866    0.275   14.053    0.000
+## 
+## R-Square:
+##                    Estimate
+##     G3                0.822
+##     G2                0.726
+## 
+## Defined Parameters:
+##                    Estimate  Std.Err  z-value  P(>|z|)
+##     ab                0.953    0.056   17.003    0.000
+\end{verbatim}
+
+\hypertarget{resampling}{%
+\section{Resampling}\label{resampling}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{testmod <-}\StringTok{ "}
+\StringTok{# Path c' (direct effect)}
+\StringTok{G3 ~ c*G1 }
+
+\StringTok{# Path a}
+\StringTok{G2 ~ a*G1}
+
+\StringTok{# Path b}
+\StringTok{G3 ~ b*G2}
+
+\StringTok{# Indreict effect (a*b): Sobel test (Delta Method)}
+\StringTok{ab := a*b}
+\StringTok{"}
+
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{testmod2 <-}\StringTok{ }\KeywordTok{sem}\NormalTok{(testmod, }\DataTypeTok{data =}\NormalTok{ my_test,}
+                \DataTypeTok{se =} \StringTok{"bootstrap"}\NormalTok{, }\DataTypeTok{bootstrap =} \DecValTok{100}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(testmod2,  }\DataTypeTok{fit.measures =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{rsquare =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## lavaan 0.6-7 ended normally after 18 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                          5
+##                                                       
+##   Number of observations                           395
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 0.000
+##   Degrees of freedom                                 0
+## 
+## Model Test Baseline Model:
+## 
+##   Test statistic                              1193.651
+##   Degrees of freedom                                 3
+##   P-value                                        0.000
+## 
+## User Model versus Baseline Model:
+## 
+##   Comparative Fit Index (CFI)                    1.000
+##   Tucker-Lewis Index (TLI)                       1.000
+## 
+## Loglikelihood and Information Criteria:
+## 
+##   Loglikelihood user model (H0)              -1647.634
+##   Loglikelihood unrestricted model (H1)      -1647.634
+##                                                       
+##   Akaike (AIC)                                3305.268
+##   Bayesian (BIC)                              3325.162
+##   Sample-size adjusted Bayesian (BIC)         3309.297
+## 
+## Root Mean Square Error of Approximation:
+## 
+##   RMSEA                                          0.000
+##   90 Percent confidence interval - lower         0.000
+##   90 Percent confidence interval - upper         0.000
+##   P-value RMSEA <= 0.05                             NA
+## 
+## Standardized Root Mean Square Residual:
+## 
+##   SRMR                                           0.000
+## 
+## Parameter Estimates:
+## 
+##   Standard errors                            Bootstrap
+##   Number of requested bootstrap draws              100
+##   Number of successful bootstrap draws             100
+## 
+## Regressions:
+##                    Estimate  Std.Err  z-value  P(>|z|)
+##   G3 ~                                                
+##     G1         (c)    0.153    0.044    3.521    0.000
+##   G2 ~                                                
+##     G1         (a)    0.966    0.030   32.326    0.000
+##   G3 ~                                                
+##     G2         (b)    0.987    0.032   30.830    0.000
+## 
+## Variances:
+##                    Estimate  Std.Err  z-value  P(>|z|)
+##    .G3                3.723    0.527    7.069    0.000
+##    .G2                3.866    0.598    6.459    0.000
+## 
+## R-Square:
+##                    Estimate
+##     G3                0.822
+##     G2                0.726
+## 
+## Defined Parameters:
+##                    Estimate  Std.Err  z-value  P(>|z|)
+##     ab                0.953    0.036   26.452    0.000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{parameterEstimates}\NormalTok{(testmod2, }\DataTypeTok{ci =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{level =} \FloatTok{0.95}\NormalTok{, }\DataTypeTok{boot.ci.type =} \StringTok{"perc"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   lhs op rhs label    est    se      z pvalue ci.lower ci.upper
+## 1  G3  ~  G1     c  0.153 0.044  3.521      0    0.062    0.248
+## 2  G2  ~  G1     a  0.966 0.030 32.326      0    0.899    1.019
+## 3  G3  ~  G2     b  0.987 0.032 30.830      0    0.929    1.066
+## 4  G3 ~~  G3        3.723 0.527  7.069      0    2.714    4.893
+## 5  G2 ~~  G2        3.866 0.598  6.459      0    2.842    5.441
+## 6  G1 ~~  G1       10.989 0.000     NA     NA   10.989   10.989
+## 7  ab := a*b    ab  0.953 0.036 26.452      0    0.870    1.021
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{mediation}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ my_test}\OperatorTok{$}\NormalTok{G1,}
+           \DataTypeTok{mediator =}\NormalTok{ my_test}\OperatorTok{$}\NormalTok{G2,}
+           \DataTypeTok{dv =}\NormalTok{ my_test}\OperatorTok{$}\NormalTok{G3,}
+           \DataTypeTok{bootstrap =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{B =} \DecValTok{100}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Bootstrap resampling has begun. This process may take a considerable amount of time if the number of replications is large, which is optimal for the bootstrap procedure."
+\end{verbatim}
+
+\begin{verbatim}
+##                                         Estimate CI.Lower_Percentile
+## Indirect.Effect                        0.9529875           0.8755722
+## Indirect.Effect.Partially.Standardized 0.2080104           0.1893937
+## Index.of.Mediation                     0.6904269           0.6341650
+## R2_4.5                                 0.6389737           0.5805129
+## R2_4.6                                 0.3650581           0.2906729
+## R2_4.7                                 0.4440214           0.3808944
+## Ratio.of.Indirect.to.Total.Effect      0.8614529           0.7860602
+## Ratio.of.Indirect.to.Direct.Effect     6.2177615           3.6742202
+## Success.of.Surrogate.Endpoint          1.1455842           1.0881683
+## Residual.Based_Gamma                   0.5201373           0.4703380
+## Residual.Based.Standardized_gamma      0.5235306           0.4757046
+## SOS                                    0.9947425           0.9874601
+##                                        CI.Upper_Percentile CI.Lower_BCa
+## Indirect.Effect                                  1.0287243           NA
+## Indirect.Effect.Partially.Standardized           0.2315293           NA
+## Index.of.Mediation                               0.7586671           NA
+## R2_4.5                                           0.6985184           NA
+## R2_4.6                                           0.4623102           NA
+## R2_4.7                                           0.5252615           NA
+## Ratio.of.Indirect.to.Total.Effect                0.9379093           NA
+## Ratio.of.Indirect.to.Direct.Effect              15.1982279           NA
+## Success.of.Surrogate.Endpoint                    1.2175729           NA
+## Residual.Based_Gamma                             0.5634116           NA
+## Residual.Based.Standardized_gamma                0.5659546           NA
+## SOS                                              0.9989668           NA
+##                                        CI.Upper_BCa
+## Indirect.Effect                                  NA
+## Indirect.Effect.Partially.Standardized           NA
+## Index.of.Mediation                               NA
+## R2_4.5                                           NA
+## R2_4.6                                           NA
+## R2_4.7                                           NA
+## Ratio.of.Indirect.to.Total.Effect                NA
+## Ratio.of.Indirect.to.Direct.Effect               NA
+## Success.of.Surrogate.Endpoint                    NA
+## Residual.Based_Gamma                             NA
+## Residual.Based.Standardized_gamma                NA
+## SOS                                              NA
+\end{verbatim}
+
+\end{document}

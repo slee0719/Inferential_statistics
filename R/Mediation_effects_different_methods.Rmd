@@ -51,6 +51,11 @@ summary_for_all(test)
 
 ```
 ```{r}
+mod <- lm(G3 ~ G1*G2, data = test)
+plot(mod)
+```
+
+```{r}
 my_test <- test %>%
   select(G1, G2, G3) %>%
   as.data.frame()
@@ -110,4 +115,8 @@ mediation(x = my_test$G1,
            mediator = my_test$G2,
            dv = my_test$G3,
            bootstrap = TRUE, B = 100)
+```
+
+```{r}
+
 ```
