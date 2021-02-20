@@ -1,0 +1,113 @@
+---
+title: 'Mediation Effects: Comparing different methods'
+author: "Seunghun Lee"
+date: "r sys.Date()"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Import necessary libraries
+```{r}
+libraries <- c("dplyr", "ggplot2", "kableExtra", "tidyverse", "lavaan", "MBESS")
+lapply(libraries, require, character.only = TRUE)
+```
+
+# Import the data
+```{r}
+dat <- read.csv("./data/student-mat.csv", sep = ';')
+```
+
+# Descriptive statistics
+```{r}
+dat %>%
+  is.na %>%
+  apply(2, sum) # there is no missing value
+
+test <- dat %>%
+  mutate(across(where(is.character), as.factor))
+```
+
+# Assumptions
+```{r}
+summary_for_all <- function(data){
+  for(i in 1:ncol(data)){
+    if(class(data[[i]]) == "integer"){
+      hist(data[[i]], breaks = 7,
+           main = paste("Histogram of", names(test)[i]),
+           xlab = names(test[i]),
+           ylab = "Frequency"
+          )} else if (class(data[[i]]) == "factor"){
+            kbl(summary(data[[i]]), caption = paste("Table of", names(data[i]))) %>%
+                kable_classic(full_width = FALSE, html_font = "Cambria") %>%
+                kable_styling(font_size = 12, position = "center")
+          }
+  }
+}
+
+summary_for_all(test)
+
+```
+```{r}
+my_test <- test %>%
+  select(G1, G2, G3) %>%
+  as.data.frame()
+```
+
+# SEM
+```{r}
+testmod <- "
+# Path c' (direct effect)
+G3 ~ c*G1 
+
+# Path a
+G2 ~ a*G1
+
+# Path b
+G3 ~ b*G2
+
+# Indreict effect (a*b): Sobel test (Delta Method)
+ab := a*b
+"
+
+# Fit estimate
+fitmod <- sem(testmod, data = my_test)
+```
+
+```{r}
+summary(fitmod, fit.measures = TRUE, rsquare = TRUE)
+```
+
+# Resampling
+```{r}
+testmod <- "
+# Path c' (direct effect)
+G3 ~ c*G1 
+
+# Path a
+G2 ~ a*G1
+
+# Path b
+G3 ~ b*G2
+
+# Indreict effect (a*b): Sobel test (Delta Method)
+ab := a*b
+"
+
+set.seed(1)
+testmod2 <- sem(testmod, data = my_test,
+                se = "bootstrap", bootstrap = 100)
+```
+
+```{r}
+summary(testmod2,  fit.measures = TRUE, rsquare = TRUE)
+parameterEstimates(testmod2, ci = TRUE, level = 0.95, boot.ci.type = "perc")
+```
+```{r}
+mediation(x = my_test$G1,
+           mediator = my_test$G2,
+           dv = my_test$G3,
+           bootstrap = TRUE, B = 100)
+```

@@ -1,0 +1,32 @@
+---
+title: "Nominal_obs_vs_exp"
+author: "Seunghun Lee"
+date: "r sys.Date()"
+output: 
+  pdf_document:
+    toc: true
+    toc_depth: 2
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Load packages
+```{r message = FALSE, warning = FALSE}
+library(dplyr)
+```
+
+# Import data
+```{r}
+# P. Cortez and A. Silva. Using Data Mining to Predict Secondary School Student Performance. In A. Brito and J. Teixeira Eds., Proceedings of 5th FUture BUsiness TEChnology Conference (FUBUTEC 2008) pp. 5-12, Porto, Portugal, April, 2008, EUROSIS, ISBN 978-9077381-39-7.
+
+dat <- read.csv("./data/student-mat.csv", sep = ';') %>%
+  mutate(across(where(is.character), as.factor))
+```
+
+# Descriptive statistics
+```{r}
+p1 <- hist(dat$G1, breaks=10)
+p1$counts
+```
